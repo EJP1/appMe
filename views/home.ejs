@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<style>
+
+</style>
+
+<head>
+    <link href='/stylesheets/home.css' rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!--<scriptdata-main="javascripts/main" src="javascripts/require.js"></script>s-->
+    <script src="javascripts/jquery-3.1.1.min.js"></script>
+    <script src="javascripts/moment-with-locales.min.js"></script>
+    <script src="javascripts/lodash.js"></script>
+    <script src="javascripts/home.js"></script>
+</head>
+
+<body>
+    <div id="view">
+        <div id="navbar">
+            <div id="navtitle" onclick="window.location.href = '/'">Toolbox</div>
+            <div id="btnbox-right" >
+                <div id="btnline" onclick="openSideNav()"></div>
+            </div>
+            <div id="btnbox-left">
+                <div id="btn1" onclick="changeTheme()"></div>
+            </div>
+        </div>
+        <div id="sidenav" open="0">
+            <div class="container0">
+                    <ul>
+                        <li><a class="a1" href="/superreplacer">Super replacer</a></li>
+                        <li><a class="a1" href="/duplicator">Duplicator</a></li>
+                        <li><a class="a1" href="/gridmaker">Gridmaker</a></li>
+                    </ul>
+                </div>
+        </div>
+
+        <div id="content">
+            <div id="spacer">
+                <div class="container20">
+                    <p class="p1">Choose a tool..</p>
+                </div>
+                <div class="container20">
+                    <ul>
+                        <li class="li-link"><a class="a1" href="/superreplacer">Super replacer</a></li>
+                        <li class="li-link"><a class="a1" href="/duplicator">Duplicator</a></li>
+                        <li class="li-link"><a class="a1" href="/gridmaker">Gridmaker</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="loader"></div>
+    </div>
+</body>
+
+</html>

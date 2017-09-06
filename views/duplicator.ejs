@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<style>
+
+</style>
+
+<head>
+    <link href='/stylesheets/home.css' rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!--<scriptdata-main="javascripts/main" src="javascripts/require.js"></script>s-->
+    <script src="javascripts/jquery-3.1.1.min.js"></script>
+    <script src="javascripts/moment-with-locales.min.js"></script>
+    <script src="javascripts/lodash.js"></script>
+    <script src="javascripts/home.js"></script>
+    <script src="javascripts/duplicator.js"></script>
+</head>
+
+<body>
+    <div id="view">
+        <div id="navbar">
+            <div onclick="window.location.href = '/'" id="navtitle">Toolbox</div>
+            <div id="btnbox-right">
+                <div id="btnline"></div>
+            </div>
+            <div id="btnbox-left">
+                <div id="btn1" onclick="changeTheme()"></div>
+            </div>
+        </div>
+
+        <div id="content">
+            <div id="spacer">
+                <!--<div class="txt1">
+                    Welcome, want to replace som text or run through a CSV-file. Pick a tool below..
+                </div>-->
+                <div class="pagetitle">
+                        Duplicator
+                </div>
+
+                <div class="container20">
+                        <p class="p1">Upload a CSV-fil and choose a how many duplicates of every row you want.</p>
+                </div>
+                
+                <div class="container20">
+                    <i class="material-icons">unarchive</i>
+                    <input type="file" name="file" id="filecsv" class="inputfile" accept=".csv" onchange="getList(this.files)" />
+                    <label for="filecsv">Upload CSV</label>
+                </div>
+
+                <div class="container10">
+                    <div id="tablediv">
+                    <table id='csvtable'>
+                        <thead id='csvtable-head'>
+                        </thead>
+                        <tbody id='csvtable-body'>
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+                <div class="container20">
+                        <p class="p1">Choose duplicate amount.</p>
+                </div>
+                <div class="container10">
+                    <input class="inp-nr" id="dupnr" type="number" name="quantity" min="1" max="20" value="1">
+                </div>
+                <div class="container40">
+                    <button type="button" class="btn1" onclick="genFile()">Go</button>
+                </div>
+            </div>
+        </div>
+        <div class="loader"></div>
+    </div>
+</body>
+
+</html>

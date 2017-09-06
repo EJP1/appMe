@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+    body {
+        font-family: helvetica;
+        color: #191919;
+        /*padding: 5px;*/
+    }
+    
+    #mainContent {
+        width: 100%;
+        height: 100%;
+        /*border: 1px solid lightgrey;*/
+        /*padding: 10px;*/
+    }
+    
+    #titleBox {
+        width: 100%;
+    }
+    
+    #title {
+        height: 30px;
+        text-align: center;
+        font-size: 24px;
+        border-bottom: 1px solid lightgray;
+    }
+    
+    #uiControls {}
+    
+    .li-inf {
+        color: #00adee;
+        cursor: pointer;
+    }
+    
+    .contBox {
+        width: 100%;
+        border-bottom: 1px solid lightgray;
+    }
+    /*File Table*/
+    /*FIXED HEADER TABLE*/
+    
+    .scroll {
+        border: 0;
+        border-collapse: collapse;
+    }
+    
+    .scroll tr {
+        display: flex;
+    }
+    
+    .scroll td {
+        flex: 1 1;
+    }
+    
+    .scroll thead {
+        background-color: #f9f9f9;
+    }
+    
+    .scroll thead tr:after {
+        overflow-y: scroll;
+        visibility: hidden;
+        height: 0;
+    }
+    
+    .scroll thead th {
+        flex: 1 1;
+        display: block;
+        border-bottom: 1px solid #8c8c8c;
+        text-align: left;
+    }
+    
+    .scroll tbody {
+        display: block;
+        overflow-y: auto;
+        height: 60vh;
+    }
+    
+    .scroll tbody tr {
+        padding: 10px;
+        border-bottom: 1px solid #cccccc;
+    }
+    
+    .scroll tbody tr:hover {
+        background-color: #e5f6fd;
+        cursor: pointer;
+    }
+    
+    .scroll tbody td th {
+        text-align: left;
+    }
+    
+    #fileTable {
+        /*margin-top: 10px;*/
+        width: 100%;
+    }
+    /*FIXED HEADER TABLE END*/
+    /*USB Table*/
+    /*FIXED HEADER TABLE*/
+    
+    .pathTable thead th {
+        border-bottom: 1px solid #8c8c8c;
+        text-align: left;
+    }
+    
+    .pathTable tbody tr {
+        padding: 10px;
+        border-bottom: 1px solid #cccccc;
+    }
+    
+    .pathTable {
+        width: 100%;
+        height: auto;
+        table-layout: fixed;
+    }
+    
+    .pathTable tbody tr:hover {
+        /*background-color: #e5f6fd;*/
+        /*cursor: pointer;*/
+    }
+
+    
+    .tbl-head-btn {
+        width: 40px;
+        text-align: left;
+    }
+    
+    .tbl-head-name {
+        width: calc(100%-140px);
+        text-align: left;
+    }
+    
+    .tbl-head-choose {
+        width: 100px;
+        text-align: left;
+    }
+    
+    .tbr-path-exp {
+        width: 40px;
+        text-align: left;
+        padding: 10px;
+    }
+    
+    .tbr-path-name {
+        width: calc(100%-140px);
+        text-align: left;
+        padding: 10px;
+    }
+    
+    .tbr-path-choose {
+        width: 100px;
+        text-align: left;
+        padding: 10px;
+    }
+    /*FIXED HEADER TABLE END*/
+    
+    .buttonTouch {
+        background-color: #00adee;
+        min-width: 80px;
+        height: 40px;
+        border: 0px;
+        border-radius: 5px;
+        margin: 10px;
+        font-size: 16px;
+        color: #f2f2f2;
+        box-shadow: 2px 2px 10px lightgray;
+        cursor: pointer;
+    }
+    
+    .buttonTouch:hover {
+        background-color: #32bdf1;
+    }
+    
+    .buttonTouch:focus {
+        outline: 0;
+    }
+    
+    .checkboxTouch {
+        border: 1px solid;
+        border-color: #cccccc;
+        background-color: #f9f9f9;
+        /*color: lightgray;*/
+        min-width: 80px;
+        height: 40px;
+        border-radius: 5px;
+        /*margin: 10px;*/
+        font-size: 16px;
+        cursor: pointer;
+    }
+    
+    .checkboxTouch:hover {
+        background-color: #e5f6fd;
+    }
+    
+    .checkboxTouch:focus {
+        outline: 0;
+    }
+    
+    .tableContr {
+        padding: 15px;
+        background-color: #f9f9f9;
+    }
+    
+    .checkbLabel {
+        margin-right: 15px;
+    }
+    
+    .pathdialog {
+        position: absolute;
+        width: 300px;
+        height: 300px;
+    }
+    
+    #pathlist {
+        display: none;
+    }
+    
+    #pathTable tbody {
+        height: 100px;
+    }
+    
+    .expbtn {
+        width: 24px;
+        height: 24px;
+        background-color: #32bdf1;
+        border-radius: 12px;
+        font-size: 12px;
+        text-align: center;
+        border: 0px;
+        color: white;
+        cursor: pointer;
+    }
+    
+    .expbtn:hover {
+        color: grey;
+    }
+    
+    .expbtn:focus {
+        outline: 0;
+    }
+    
+    .rowBtn {
+        border: 1px solid #cccccc;
+        background-color: #f9f9f9;
+        min-width: 80px;
+        height: 24px;
+        border-radius: 5px;
+        margin: 10px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    
+    .rowBtn:hover {
+        background-color: #e5f6fd;
+    }
+    
+    .rowBtn:focus {
+        outline: 0;
+    }
+    /*Loader*/
+    
+    .loader {
+        border: 5px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 5px solid #3498db;
+        width: 60px;
+        height: 60px;
+        -webkit-animation: spin 1s linear infinite;
+        animation: spin 1s linear infinite;
+        position: fixed;
+        z-index: 999;
+        overflow: show;
+        margin: auto;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        display: none;
+    }
+    
+    @-webkit-keyframes spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+    
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+
+<head>
+    <!--<scriptdata-main="javascripts/main" src="javascripts/require.js"></script>s-->
+    <script src="javascripts/jquery-3.1.1.min.js"></script>
+    <script src="javascripts/moment-with-locales.min.js"></script>
+    <script src="javascripts/lodash.js"></script>
+    <script src="javascripts/Filehandler.js"></script>
+</head>
+
+<body>
+    <div id="mainContent">
+        <div class="titleBox" id="title">Filehandler
+        </div>
+        <div class="contBox">
+            <p>Path to: <span class="li-inf" id="pathto" data="0" onclick="getHd()">Choose a path...</span></p>
+            <div id="pathlist">
+                <table class="pathTable">
+                    <thead>
+                        <tr>
+                            <th class="tbl-head-btn"></th>
+                            <th class="tbl-head-name">Name</th>
+                            <th class="tbl-head-choose">Choose</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tblBody " id="tbl-bd-path">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="contBox">
+            <div class="tableContr">
+                <button class="checkboxTouch" type="button" state="0" id="cb1" onclick="checkboxToggle('cb1')">Choose all</button>
+                <button class="checkboxTouch" type="button" state="0" id="cb2" onclick="checkboxToggle('cb2')">Choose today</button>
+            </div>
+            <table id="fileTable" class="scroll">
+                <thead>
+                    <tr>
+                        <th class="tbl-head" data-field="site">Filename</th>
+                        <th class="tbl-head" data-field="site">Date Created</th>
+                        <th class="tbl-head" data-field="site">Chosen</th>
+                    </tr>
+                </thead>
+                <tbody class="tblBody" id="tbl-bd-files">
+
+                </tbody>
+            </table>
+        </div>
+        <div class="contBox" id="uiControls">
+            <button class="buttonTouch" type="button" onclick="transferFiles()">Transfer files</button>
+        </div>
+        <div class="loader"></div>
+    </div>
+</body>
+
+</html>

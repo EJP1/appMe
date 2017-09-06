@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<style>
+
+</style>
+
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href='/stylesheets/home.css' rel="stylesheet" type="text/css">
+
+    <!--<scriptdata-main="javascripts/main" src="javascripts/require.js"></script>s-->
+    <script src="javascripts/jquery-3.1.1.min.js"></script>
+    <script src="javascripts/moment-with-locales.min.js"></script>
+    <script src="javascripts/lodash.js"></script>
+    <script src="javascripts/home.js"></script>
+    <script src="javascripts/superreplace.js"></script>
+</head>
+
+<body>
+    <div id="view">
+        <div id="navbar">
+            <div onclick="window.location.href = '/'" id="navtitle">Toolbox</div>
+            <div id="btnbox-right">
+                <div id="btnline"></div>
+            </div>
+            <div id="btnbox-left">
+                <div id="btn1" onclick="changeTheme()"></div>
+            </div>
+        </div>
+
+        <div id="content">
+            <div id="spacer">
+                <div class="pagetitle">
+                    Super replacer
+                </div>
+                <!--Upload CSV-->
+                <div class="container20">
+                    <p class="p1">To replace text you need two things, variable list and a template.</p>
+                </div>
+                <div class="container0">
+                    <p class="p1">Upload the variable list here. Each column will be given an ID to map towards the template with.<br>                        </p>
+                </div>
+                <div class="container20">
+                    <i class="material-icons">unarchive</i>
+                    <input type="file" name="file" id="filecsv" class="inputfile" accept=".csv" onchange="getList(this.files)" />
+                    <label for="filecsv">Upload CSV</label>
+                </div>
+
+                <div class="container10">
+                    <div id="tablediv">
+                        <table id='csvtable'>
+                            <thead id='csvtable-head'>
+                            </thead>
+                            <tbody id='csvtable-body'>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!--Incrementor-->
+                <div class="container20">
+                    <p class="p1">Each value will increment with the value you choose.<br>                        </p>
+                </div>
+
+                <div class="container10">
+                    <ul id="inc-list">
+                        <li>
+                            <div class="container0">
+                                <div class="stand-txt-div "> %9%</div>
+                                <input class="inp-nr" id="dupnr" type="number" name="quantity" min="1" max="20" value="1">
+                                <div class="iconbtn" onclick="addIncRow()">
+                                    <i class="material-icons icon30">add</i>
+                                </div>
+                            </div>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <!--Template-->
+                <div class="container30">
+                    <p class="p1">The template file can be either copied to the textarea below or uploaded.<br> Edit template and input
+                        ID from above, to where you want to insert variables from list. </p>
+                </div>
+
+                <div class="container20">
+                    <i class="material-icons">unarchive</i>
+                    <input type="file" name="file" id="templatefile" class="inputfile" accept=".txt" onchange="getText(this.files)" />
+                    <label for="templatefile">Upload Template</label>
+                </div>
+                <div class="container10">
+                    <textarea class='xxtxtarea' id='templateText'></textarea>
+                </div>
+
+
+                <div class="container40">
+                    <button type="button" class="btn1 lft" onclick="genFile(0)">Separate</button>
+                    <button type="button" class="btn1 rgt" onclick="genFile(1)">All in one</button>
+                </div>
+            </div>
+        </div>
+        <div class="loader"></div>
+    </div>
+</body>
+
+</html>

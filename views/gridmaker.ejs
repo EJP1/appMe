@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<style>
+
+</style>
+
+<head>
+    <link href='/stylesheets/home.css' rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!--<scriptdata-main="javascripts/main" src="javascripts/require.js"></script>s-->
+    <script src="javascripts/jquery-3.1.1.min.js"></script>
+    <script src="javascripts/moment-with-locales.min.js"></script>
+    <script src="javascripts/lodash.js"></script>
+    <script src="javascripts/home.js"></script>
+    <script src="javascripts/gridmaker.js"></script>
+</head>
+
+<body>
+    <div id="view">
+        <div id="navbar">
+            <div onclick="window.location.href = '/'" id="navtitle">Toolbox</div>
+            <div id="btnbox-right">
+                <div id="btnline"></div>
+            </div>
+            <div id="btnbox-left">
+                <div id="btn1" onclick="changeTheme()"></div>
+            </div>
+        </div>
+
+        <div id="content">
+            <div id="spacer">
+                <!--<div class="txt1">
+                    Welcome, want to replace som text or run through a CSV-file. Pick a tool below..
+                </div>-->
+                <div class="pagetitle">
+                    Gridmaker
+                </div>
+
+                <div class="container20">
+                    <p class="p1">Make your own grid</p>
+                </div>
+
+                <div class="e-grid" id="theGrid">
+                </div>
+
+            </div>
+        </div>
+        <div class="loader"></div>
+    </div>
+</body>
+
+</html>
